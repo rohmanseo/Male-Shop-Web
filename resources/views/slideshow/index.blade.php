@@ -290,29 +290,31 @@
                             <img src="{{asset('assets/images/users/5.jpg')}}" alt="Avatar" class="image" style="width:100%">
                             <div class="middle">
                               <div class="text"><button class="btn btn-primary">Ubah</button></div>
+                              <div class="text"><button class="btn btn-danger">Hapus</button></div>
                             </div>
                           </div>
 
                           <div class="slideshow-container">
-                                <img src="{{asset('assets/images/users/5.jpg')}}" alt="Avatar" class="image" style="width:100%">
-                                <div class="middle">
-                                  <div class="text"><button class="btn btn-primary">Ubah</button></div>
-                                </div>
-                              </div>
-
-                              <div class="slideshow-container">
-                                    <img src="{{asset('assets/images/users/5.jpg')}}" alt="Avatar" class="image" style="width:100%">
-                                    <div class="middle">
-                                      <div class="text"><button class="btn btn-primary">Ubah</button></div>
-                                    </div>
-                                  </div>
-
-                                  <div class="slideshow-container">
-                                        <img src="{{asset('assets/images/users/5.jpg')}}" alt="Avatar" class="image" style="width:100%">
-                                        <div class="middle">
-                                          <div class="text"><button class="btn btn-primary">Ubah</button></div>
-                                        </div>
-                                      </div>
+                            <img src="{{asset('assets/images/users/5.jpg')}}" alt="Avatar" class="image" style="width:100%">
+                            <div class="middle">
+                              <div class="text"><button class="btn btn-primary">Ubah</button></div>
+                              <div class="text"><button class="btn btn-danger">Hapus</button></div>
+                            </div>
+                          </div>
+                          <div class="slideshow-container">
+                            <img src="{{asset('assets/images/users/5.jpg')}}" alt="Avatar" class="image" style="width:100%">
+                            <div class="middle">
+                              <div class="text"><button class="btn btn-primary">Ubah</button></div>
+                              <div class="text"><button class="btn btn-danger">Hapus</button></div>
+                            </div>
+                          </div>
+                          <div class="slideshow-container">
+                            <img src="{{asset('assets/images/users/5.jpg')}}" alt="Avatar" class="image" style="width:100%">
+                            <div class="middle">
+                              <div class="text"><button class="btn btn-primary">Ubah</button></div>
+                              <div class="text"><button class="btn btn-danger">Hapus</button></div>
+                            </div>
+                          </div>
 
                 </div>
             </div>
