@@ -285,36 +285,22 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                
-                    <div class="slideshow-container">
-                            <img src="{{asset('assets/images/users/5.jpg')}}" alt="Avatar" class="image" style="width:100%">
-                            <div class="middle">
-                              <div class="text"><button class="btn btn-primary">Ubah</button></div>
-                              <div class="text"><button class="btn btn-danger">Hapus</button></div>
-                            </div>
-                          </div>
 
-                          <div class="slideshow-container">
-                            <img src="{{asset('assets/images/users/5.jpg')}}" alt="Avatar" class="image" style="width:100%">
+                @foreach($data as $d)              
+                    <div class="slideshow-container"><img src="{{ $d->foto }}" alt="Avatar" class="image" style="width:100%">
                             <div class="middle">
-                              <div class="text"><button class="btn btn-primary">Ubah</button></div>
+                              <div class="text"><form method="POST" enctype="multipart/form-data" action="{{route('slideshow.update',$d->id)}}">
+                                @csrf
+                                @method('PUT')
+                            
+                                <input type="file" id="gambar" name="gambar" class="btn btn-primary" />
+                                <input type="submit" name="submit">
+                            
+                            </form></div>
                               <div class="text"><button class="btn btn-danger">Hapus</button></div>
                             </div>
                           </div>
-                          <div class="slideshow-container">
-                            <img src="{{asset('assets/images/users/5.jpg')}}" alt="Avatar" class="image" style="width:100%">
-                            <div class="middle">
-                              <div class="text"><button class="btn btn-primary">Ubah</button></div>
-                              <div class="text"><button class="btn btn-danger">Hapus</button></div>
-                            </div>
-                          </div>
-                          <div class="slideshow-container">
-                            <img src="{{asset('assets/images/users/5.jpg')}}" alt="Avatar" class="image" style="width:100%">
-                            <div class="middle">
-                              <div class="text"><button class="btn btn-primary">Ubah</button></div>
-                              <div class="text"><button class="btn btn-danger">Hapus</button></div>
-                            </div>
-                          </div>
+                @endforeach
 
                 </div>
             </div>
