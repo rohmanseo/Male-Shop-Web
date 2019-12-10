@@ -14,6 +14,7 @@ class CreateProdukMemilikiWarnaTable extends Migration
     public function up()
     {
         Schema::create('produk_memiliki_warna', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('produk_id');
             $table->unsignedBigInteger('warna_id');
             $table->timestamps();

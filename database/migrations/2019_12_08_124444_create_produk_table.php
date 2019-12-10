@@ -19,8 +19,6 @@ class CreateProdukTable extends Migration
             $table->string('foto');
             $table->string('diskripsi');
             $table->string('kategori_id');
-            $table->string('warna_id');
-            $table->string('ukuran_id');
             $table->timestamps();
         });
     }
