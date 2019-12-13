@@ -15,6 +15,7 @@ class CreateProdukTable extends Migration
     {
         Schema::create('produk', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nama');
             $table->string('harga');
             $table->string('foto');
             $table->string('diskripsi');
@@ -22,6 +23,9 @@ class CreateProdukTable extends Migration
             $table->string('warna_id');
             $table->string('ukuran_id');
             $table->timestamps();
+
+         
+
         });
     }
 

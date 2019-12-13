@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Warna;
 use Illuminate\Http\Request;
-use App\Produk;
 
-class ProdukController extends Controller
+class WarnaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,8 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $produk=Produk::get();
-        return view('produk.index',compact('produk'));
+        $warna=Warna::get();
+        return view('warna.index',compact('warna'));
     }
 
     /**
@@ -25,7 +24,7 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('produk.create');
+        return view('warna.create');
     }
 
     /**
@@ -40,8 +39,8 @@ class ProdukController extends Controller
             'nama'=>'min:4|required',
         ]);
 
-        $produk=Produk::create($request->all());
-        return redirect()->route('produk.index')->with('pesan','berhasil di masukan');
+        $warna=Warna::create($request->all());
+        return redirect()->route('warna.index')->with('pesan','berhasil di masukan');
     }
 
     /**
@@ -63,8 +62,8 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        $produk=Produk::findOrFail($id);
-        return view('produk.edit', compact('produk'));
+        $warna=Warna::findOrFail($id);
+        return view('warna.edit', compact('warna'));
     }
 
     /**
@@ -79,9 +78,9 @@ class ProdukController extends Controller
         $request->validate([
             'nama'=>'min:4|required',
         ]);
-        $produk=Produk::find($id);
-        $produk->update($request->all());
-        return redirect()->route('produk.index')->with('pesan','berhasil di ubah');
+        $warna=Warna::find($id);
+        $warna->update($request->all());
+        return redirect()->route('warna.index')->with('pesan','berhasil di ubah');
     }
 
     /**
@@ -92,14 +91,8 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        $produk=Produk::find($id)->delete();
+        $waran=Warna::find($id)->delete();
         
-        return redirect()->route('produk.index')->with('pesan','berhasil di hapus');
-    }
-
-    public function showAPI(Produk $produk)
-    {
-        $produks = $produk->all();
-        return response()->json($produks);
+        return redirect()->route('warna.index')->with('pesan','berhasil di hapus');
     }
 }
