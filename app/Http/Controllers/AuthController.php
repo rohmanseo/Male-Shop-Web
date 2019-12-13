@@ -8,7 +8,7 @@ use Auth;
 
 class AuthController extends Controller
 {
-    public function register(Request $request, User $user)
+    public function register(Request $request)
     {
         $this->validate($request,[
             'nama' => 'required',
@@ -16,32 +16,26 @@ class AuthController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        $user->create([
+        User::create([
             'nama' => $request->nama,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => $request->password,
             'api_token' => bcrypt($request->email)
         ]);
+        $res = ['message:' => 'success'];
+        return response()->json($res,201);
 
     }
     public function login(Request $request)
     {
-//        if(!Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-//            $res = [
-//                'msg' => 'error, failed logged in',
-//                'email' => $request->email,
-//                'password' => $request->password,
-//            ];
-//            return response()->json($request,404);
-//        }
 
-        $user = User::all()->where('email',$request->email)->first();
+        $user = User::where('email',$request->email)->first();
         if (!$user)
         {
             return 'Error 404';
         }
 
-        if ($request->email == $user->email)
+        if ($request->password == $user->password)
         {
             return 'logged in';
         }

@@ -97,9 +97,15 @@ class ProdukController extends Controller
         return redirect()->route('produk.index')->with('pesan','berhasil di hapus');
     }
 
-    public function showAPI(Produk $produk)
+    public function showProduk()
     {
-        $produks = $produk->all();
+        $produks = Produk::all();
         return response()->json($produks);
+    }
+
+    public function newArrival()
+    {
+        $produk = Produk::orderBy('created_at','desc')->limit(10)->get();
+        return response()->json($produk,201);
     }
 }
