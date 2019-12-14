@@ -19,7 +19,7 @@ class UserController extends Controller
         
         
        
-        return view('user.profil', compact('user'));
+        return view('user.index', compact('user'));
     }
 
     /**
@@ -40,14 +40,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
-        if($request->hasFile('foto_profil')){
-            // $request->file('foto_profil')->move('images/',$request->file('foto_profil')->getClientOriginalName());
-            $path = $request->file('foto_profil')->store('/images');
-            $product->image_url = $path;
-            $user->foto_profil=$request->file('foto_profil')->getClientOriginalName();
-            $user->save();  
-        }
+       
+        // User::create($request->all());
+        $user=User::create([
+        'nama'=> $request->nama,
+        'email' => $request->email,
+        'password' => $request->password,
+        'no_telp'=> $request->no_telp,
+        'alamat'=>$request->alamat,
+        'foto'=> $request->foto,
+        'api_token'=>bcrypt($request->email)
+        
+        ]);
+        
         
         return redirect()->route('user.index')->with('pesan','berhasil di masukan');
     }
@@ -71,7 +76,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-       
+        $user=User::findOrFail($id);
+        return view('user.edit', compact('user'));
        
     }
 
@@ -84,8 +90,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user =User::find($id);
-        $user=update($request->all());
+        $request->validate([
+            'name'=>'min:4|required',
+        ]);
+        $user=User::find($id);
+        $user->update($request->all());
+        return redirect()->route('user.index')->with('pesan','berhasil di ubah');
     }
 
     /**
@@ -96,7 +106,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $user=User::find($id)->delete();
         
+        return redirect()->route('user.index')->with('pesan','berhasil di hapus');
+    }
+    public function profil($id)
+    {
+        $user=User::find($id);
+        return view('user.profil',['user'=> $user]);
     }
 
     
