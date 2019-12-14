@@ -28,7 +28,7 @@
                     @foreach($user as $u)
                       <tr>
                         <td>{{$u->id}}</td>
-                        <td>{{$u->name}}</td>
+                        <td><a href="#">{{$u->nama}}</a></td>
                         <td>{{$u->email}}</td>
                         <td>{{$u->no_hp}}</td>
                         <td>{{$u->alamat}}</td>
