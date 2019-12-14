@@ -22,21 +22,18 @@
                     </tr>
                     </thead>
 
+
                     @foreach($produk as $p)
                         <tbody>
-
-                        <td>{{$p->id}}</td>
-                        <td><img class="img-produk" src="{{asset("produk_image/$p->foto")}}"</td>
-                        <td>{{$p->nama}}</td>
-                        <td>{{$p->harga}}</td>
-                        <td>{{$p->category->nama}}</td>
-                        <td>
-                            <button type="button" class="btn btn-info">Edit</button>
-                            <button type="button" class="btn btn-danger">Hapus</button>
-                        </td>
-                        </tbody>
-
+                    <td>{{$p->id}}</td>
+                    <td><img class="img-produk" src="{{asset("produk_image/$p->foto")}}"> </td>
+                    <td>{{$p->nama}}</td>
+                    <td>{{$p->harga}}</td>
+                    <td>{{$p->category->nama}}</td>
+                    <td><button type="button" class="btn btn-info">Edit</button> <button type="button" class="btn btn-danger">Hapus</button></td>
+                    </tbody>
                     @endforeach
+
                 </table>
             </div>
         </div>

@@ -16,11 +16,18 @@ class CreateProdukTable extends Migration
         Schema::create('produk', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama');
+<<<<<<< HEAD
             $table->decimal('harga',8,0);
+=======
+            $table->string('harga');
+>>>>>>> cfd4d277718e5ba2e70945c725667998e18447df
             $table->string('foto');
             $table->string('diskripsi');
             $table->string('kategori_id');
             $table->timestamps();
+
+         
+
         });
     }
 

@@ -10,9 +10,9 @@ class Produk extends Model
     protected $fillable = [
         'nama', 'harga', 'foto', 'diskripsi', 'kategori_id'
     ];
-
     public function category()
     {
         return $this->belongsTo('App\Kategori','kategori_id');
     }
+
 }

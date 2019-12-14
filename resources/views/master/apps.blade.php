@@ -40,16 +40,6 @@
         var editor = new Quill(container);
         var container = $('.editor').get(0);
         var editor = new Quill(container);
-        var options = {
-            debug: 'info',
-            modules: {
-                toolbar: '#toolbar'
-            },
-            placeholder: 'Compose an epic...',
-            readOnly: true,
-            theme: 'snow'
-        };
-        var editor = new Quill('#editor', options);
     </script>
 <![endif]-->
 @yield('css')
@@ -97,7 +87,8 @@
                         </span>
                         <!-- Logo icon -->
                         <!-- <b class="logo-icon"> -->
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!--You can
+                            put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
                             <!-- <img src="{{url('/')}}/assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
                             

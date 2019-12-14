@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+      
+            $user = User::get();
+        
+        
+       
+        return view('user.profil', compact('user'));
     }
 
     /**
@@ -23,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -34,7 +40,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create($request->all());
+        if($request->hasFile('foto_profil')){
+            // $request->file('foto_profil')->move('images/',$request->file('foto_profil')->getClientOriginalName());
+            $path = $request->file('foto_profil')->store('/images');
+            $product->image_url = $path;
+            $user->foto_profil=$request->file('foto_profil')->getClientOriginalName();
+            $user->save();  
+        }
+        
+        return redirect()->route('user.index')->with('pesan','berhasil di masukan');
     }
 
     /**
@@ -47,7 +62,7 @@ class UserController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -56,7 +71,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+       
+       
     }
 
     /**
@@ -68,7 +84,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user =User::find($id);
+        $user=update($request->all());
     }
 
     /**
@@ -79,6 +96,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
+
+    
 }
