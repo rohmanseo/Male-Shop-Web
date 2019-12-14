@@ -38,10 +38,20 @@ class SlideshowController extends Controller
     public function update(Request $request, $id)
     {
         if($request->hasFile('gambar')){
-            $request->file('gambar')->move('uploads/',$request->file('gambar')->getClientOriginalName());
+
+            $filename = $request->file('gambar')->getClientOriginalName();
+            $request->file('gambar')->move('uploads/',$filename);
+            $slideshow = Slideshow::find($id);
+            $slideshow->foto = $filename;
+            $slideshow->save();
+
+
         }else{
             echo "Failed";
         }
+
+        return redirect('slideshow');
+
 
     }
 

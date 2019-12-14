@@ -1,5 +1,5 @@
 <?php
-Route::get('/', 'DashboardController@index');
+Route::resource('/', 'SlideshowController');
 Route::resource('slideshow','SlideshowController');
 Route::resource('produk','ProdukController');
 Route::resource('user','UserController');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produk;
+use App\Kategori;
 
 class ProdukController extends Controller
 {
@@ -14,7 +15,8 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        //
+        $produk = Produk::all();
+        return view('produk.index',compact('produk'));
     }
 
     /**
@@ -24,7 +26,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        $kategori = Kategori::all();
+        return view('produk.create',compact('kategori'));
     }
 
     /**
@@ -35,7 +38,24 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'harga' => 'required',
+            'diskripsi' => 'required',
+            'gambar' => 'required',
+        ]);
+
+        $filename = $request->file('gambar')->getClientOriginalName();
+        $request->file('gambar')->move('produk_image/',$filename);
+
+        Produk::create([
+            'nama' => $request->nama,
+            'harga' => $request->harga,
+            'diskripsi' => $request->diskripsi,
+            'foto' => $filename,
+            'kategori_id' => $request->kategori,
+        ]);
+        return redirect('produk');
     }
 
     /**
