@@ -6,3 +6,4 @@ Route::resource('user','UserController');
 Route::resource('order','OrderController');
 Route::resource('kategori','KategoriController');
 Route::resource('warna','WarnaController');
+Route::resource('ukuran','UkuranController');

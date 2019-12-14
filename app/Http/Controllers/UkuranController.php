@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
+use App\Ukuran;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class UkuranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-      
-            $user = User::get();
-        
-        
-       
-        return view('user.profil', compact('user'));
+        $ukuran=Ukuran::get();
+        return view('ukuran.index',compact('ukuran'));
     }
 
     /**
@@ -29,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('ukuran.create');
     }
 
     /**
@@ -40,16 +36,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
-        if($request->hasFile('foto_profil')){
-            // $request->file('foto_profil')->move('images/',$request->file('foto_profil')->getClientOriginalName());
-            $path = $request->file('foto_profil')->store('/images');
-            $product->image_url = $path;
-            $user->foto_profil=$request->file('foto_profil')->getClientOriginalName();
-            $user->save();  
-        }
-        
-        return redirect()->route('user.index')->with('pesan','berhasil di masukan');
+        $request->validate([
+            'nama'=>'min:4|required',
+        ]);
+
+        $ukuran=Ukuran::create($request->all());
+        return redirect()->route('ukuran.index')->with('pesan','berhasil di masukan');
     }
 
     /**
@@ -60,9 +52,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -71,8 +63,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-       
-       
+        $ukuran=Ukuran::findOrFail($id);
+        return view('ukuran.edit', compact('ukuran'));
     }
 
     /**
@@ -84,8 +76,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user =User::find($id);
-        $user=update($request->all());
+        $request->validate([
+            'nama'=>'min:4|required',
+        ]);
+        $ukuran=Ukuran::find($id);
+        $ukuran->update($request->all());
+        return redirect()->route('ukuran.index')->with('pesan','berhasil di ubah');
     }
 
     /**
@@ -96,8 +92,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $ukuran=Ukuran::find($id)->delete();
         
+        return redirect()->route('ukuran.index')->with('pesan','berhasil di hapus');
     }
-
-    
 }

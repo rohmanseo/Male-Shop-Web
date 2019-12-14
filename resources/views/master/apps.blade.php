@@ -13,14 +13,30 @@
     <title>Matrix Template - The Ultimate Multipurpose admin template</title>
     <!-- Custom CSS -->
     <link href="{{url('/')}}/assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    
     <!-- Custom CSS -->
     <link href="{{url('/')}}/dist/css/style.min.css" rel="stylesheet">
+    <link href="{{url('/')}}/dist/css/maleshop.css" rel="stylesheet">
     <link href="{{url('/')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- klorofil -->
+    <link rel="stylesheet" href="{{url('/')}}/klorofil/assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{url('/')}}/klorofil/assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{url('/')}}/klorofil/assets/vendor/linearicons/style.css">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="{{url('/')}}/klorofil/assets/css/main.css">
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="{{url('/')}}/klorofil/assets/css/demo.css">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	
+	<link rel="apple-touch-icon" sizes="76x76" href="klorofil/assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{url('/')}}/klorofil/assets/img/favicon.png">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <![endif]-->
 @yield('css')
 </head>
@@ -236,6 +252,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="widgets.html" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Product</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('user.index')}}" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">User</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('warna.index')}}" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Warna</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('ukuran.index')}}" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Ukuran</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="tables.html" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Order</span></a></li>
                       
                     </ul>
@@ -312,7 +329,12 @@
     <script src="{{url('/')}}/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="{{url('/')}}/dist/js/pages/chart/chart-page-init.js"></script>
     <script src="{{url('/')}}/vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="{{url('/')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{url('/')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- klorofil -->
+    <script src="{{url('/')}}/klorofil/assets/vendor/jquery/jquery.min.js"></script>
+	<script src="{{url('/')}}/klorofil/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="{{url('/')}}/klorofil/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="{{url('/')}}/klorofil/assets/scripts/klorofil-common.js"></script
 
   <!-- Page level custom scripts -->
   <script>
