@@ -15,4 +15,5 @@ class Produk extends Model
         return $this->belongsTo('App\Kategori','kategori_id');
     }
 
+
 }

@@ -8,10 +8,16 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    function index(Request $request)
+    function index($api)
     {
         $user = User::where('api_token',$request->api_token)->get();
         return response()->json($user);
+    }
+    function show($api)
+    {
+        $user = User::where('api_token',$api)->first();
+        return response()->json($user->keranjang);
+
     }
     function addProduk(Request $request)
     {
