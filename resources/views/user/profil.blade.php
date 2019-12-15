@@ -15,7 +15,7 @@
 									<div class="overlay"></div>
 									<div class="profile-main">
 										<img src="{{url('/')}}/klorofil/assets/img/user-medium.png" class="img-circle" alt="Avatar">
-										<h3 class="name">Samuel Gold</h3>
+										<h3 class="name">{{$user->nama}}</h3>
 										<span class="online-status status-available">Available</span>
 									</div>
 									<div class="profile-stat">

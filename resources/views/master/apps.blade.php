@@ -17,6 +17,21 @@
     <!-- Custom CSS -->
     <link href="{{url('/')}}/dist/css/style.min.css" rel="stylesheet">
     <link href="{{url('/')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    
+    <!-- Klorofil -->
+    <link rel="stylesheet" href="{{url('/')}}/klorofil/assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{url('/')}}/klorofil/assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{url('/')}}/klorofil/assets/vendor/linearicons/style.css">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="{{url('/')}}/klorofil/assets/css/main.css">
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="{{url('/')}}/klorofil/assets/css/demo.css">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	
+	<link rel="apple-touch-icon" sizes="76x76" href="klorofil/assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{url('/')}}/klorofil/assets/img/favicon.png">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -256,6 +271,8 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('kategori.index')}}" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Kategori</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('produk.index')}}" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Product</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('user.index')}}" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">User</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('warna.index')}}" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Warna</span></a></li>                           
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('ukuran.index')}}" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Ukuran</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="tables.html" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Order</span></a></li>
                       
                     </ul>
@@ -333,6 +350,11 @@
     <script src="{{url('/')}}/dist/js/pages/chart/chart-page-init.js"></script>
     <script src="{{url('/')}}/vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="{{url('/')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Klorofil -->
+  <script src="{{url('/')}}/klorofil/assets/vendor/jquery/jquery.min.js"></script>
+	<script src="{{url('/')}}/klorofil/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="{{url('/')}}/klorofil/assets/vendor/jquery-slimscroll/jquery.slim"></script>
 
   <!-- Page level custom scripts -->
   <script>
