@@ -28,9 +28,9 @@
                     @foreach($user as $u)
                       <tr>
                         <td>{{$u->id}}</td>
-                        <td><a href="#">{{$u->nama}}</a></td>
+                        <td><a href="/user/{{$u->id}}/profil">{{$u->nama}}</a></td>
                         <td>{{$u->email}}</td>
-                        <td>{{$u->no_hp}}</td>
+                        <td>{{$u->no_telp}}</td>
                         <td>{{$u->alamat}}</td>
                          <td><img src = "{{asset('assets/images/users/1.jpg')}} " style="width:50px"  > </td>
                         <td>
