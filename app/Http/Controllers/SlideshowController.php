@@ -16,7 +16,10 @@ class SlideshowController extends Controller
 
     public function create()
     {
-        //
+        Slideshow::create([
+            'foto' => 'images.jpg'
+        ]);
+        return redirect('slideshow');
     }
 
     public function store(Request $request)

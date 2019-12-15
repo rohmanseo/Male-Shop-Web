@@ -107,8 +107,8 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        $produk=Produk::find($id)->delete();
-        
+        $produk=Produk::find($id);
+        $produk->delete();
         return redirect()->route('produk.index')->with('pesan','berhasil di hapus');
     }
 

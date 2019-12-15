@@ -30,7 +30,14 @@
                     <td>{{$p->nama}}</td>
                     <td>{{$p->harga}}</td>
                     <td>{{$p->category->nama}}</td>
-                    <td><button type="button" class="btn btn-info">Edit</button> <button type="button" class="btn btn-danger">Hapus</button></td>
+                    <td><a href="{{route('produk.edit',$p->id)}}" <button type="button" class="btn btn-info">Edit</button></a>
+                        <form action="{{ route('produk.destroy', $p->id)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
+                            </td>
                     </tbody>
                     @endforeach
 
