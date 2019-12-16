@@ -64,42 +64,34 @@
 							<!-- END LEFT COLUMN -->
 							<!-- RIGHT COLUMN -->
 							<div class="profile-right">
-								<h4 class="heading">Samuel's Awards</h4>
+								<h4 class="heading">Whislist</h4>
 								<!-- AWARDS -->
 								<div class="awards">
 									<div class="row">
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-sun award-icon"></span>
-												</div>
-												<span>Most Bright Idea</span>
-											</div>
-										</div>
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-clock award-icon"></span>
-												</div>
-												<span>Most On-Time</span>
-											</div>
-										</div>
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-magic-wand award-icon"></span>
-												</div>
-												<span>Problem Solver</span>
-											</div>
-										</div>
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-heart award-icon"></span>
-												</div>
-												<span>Most Loved</span>
-											</div>
-										</div>
+										
+					<table class="table align-items-center table-flush table-hover" id="dataTableHover">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Id</th>
+                        <th>Nama Produk</th>
+                        
+                        
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+					@foreach($user->wishlist as $w)
+                   
+                      <tr>
+                        <td>$w->id</td>
+                        <td>$w->nama</td>
+                       
+                      @endforeach
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+										
 									</div>
 									<div class="text-center"><a href="#" class="btn btn-default">See all awards</a></div>
 								</div>
