@@ -41,4 +41,9 @@ class AuthController extends Controller
         }
 
     }
+    public function getApi($email)
+    {
+        $user = User::where('email',$email)->get();
+        return response()->json($user);
+    }
 }

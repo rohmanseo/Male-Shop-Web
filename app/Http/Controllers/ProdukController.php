@@ -89,14 +89,15 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'nama'=>'min:4|required',
         ]);
-        $produk=Produk::find($id);
-        $produk->update($request->all());
-        return redirect()->route('produk.index')->with('pesan','berhasil di ubah');
+        var_dump($request-> all());
+//        $produk=Produk::find($id);
+//        $produk->update($request->all());
+//        return redirect()->route('produk.index')->with('pesan','berhasil di ubah');
     }
 
     /**
