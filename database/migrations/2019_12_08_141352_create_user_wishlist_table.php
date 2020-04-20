@@ -6,19 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUserWishlistTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('user_wishlist', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('produk_id');
+            $table->primary(['user_id','produk_id']);
             $table->timestamps();
-
             
             $table->foreign('user_id')->references('id')->on('user');
             $table->foreign('produk_id')->references('id')->on('produk');

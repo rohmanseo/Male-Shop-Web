@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProdukMemilikiWarnaTable extends Migration
+class ProdukWarnaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateProdukMemilikiWarnaTable extends Migration
      */
     public function up()
     {
-        Schema::create('produk_memiliki_warna', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('produk_warna', function (Blueprint $table) {
             $table->unsignedBigInteger('produk_id');
             $table->unsignedBigInteger('warna_id');
+            $table->primary(['warna_id','produk_id']);
             $table->timestamps();
             
             $table->foreign('produk_id')->references('id')->on('produk');
@@ -31,6 +31,6 @@ class CreateProdukMemilikiWarnaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produk_memiliki_warna');
+        Schema::dropIfExists('produk_warna');
     }
 }

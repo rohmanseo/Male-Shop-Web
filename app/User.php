@@ -3,14 +3,26 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable implements JWTSubject
 {
     protected $table = 'user';
-    protected $fillable = ['nama','email','password','no_telp','alamat','foto','api_token'];
+    protected $fillable = ['nama','email','password','no_telp','alamat','foto'];
 
-    public function keranjang()
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
+    public function cart()
     {
         return $this->belongsToMany(Produk::class,'user_keranjang');
     }

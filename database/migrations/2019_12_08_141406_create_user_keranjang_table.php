@@ -14,9 +14,9 @@ class CreateUserKeranjangTable extends Migration
     public function up()
     {
         Schema::create('user_keranjang', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('produk_id');
+            $table->primary(['user_id','produk_id']);
             $table->timestamps();
 
             
