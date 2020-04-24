@@ -39,6 +39,15 @@ class ProdukController extends Controller
         ]);
     }
 
+    public function new()
+    {
+        $produk = Produk::orderBy('created_at','desc')->limit(10)->get();
+        return response()->json([
+            "status" => "success",
+            "data" => $produk
+        ]);
+    }
+
     public function edit($id)
     {
         //

@@ -36,7 +36,7 @@ Route::group([
     'middleware' => 'api',
 
 ], function ($router) {
-
+    Route::get('produk/new', 'API\ProdukController@new');
     Route::resource('produk', 'API\ProdukController');
     Route::get('search/{query}','API\SearchController@index');
     Route::resource('wishlist','API\WishlistController');
