@@ -30,5 +30,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsToMany(Produk::class,'user_wishlist');
     }
+    public function order()
+    {
+        return $this->belongsToMany(Produk::class,'user_order')->withPivot('qty');
+    }
 }
     

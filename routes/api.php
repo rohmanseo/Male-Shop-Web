@@ -2,20 +2,6 @@
 
 use Illuminate\Http\Request;
 
-// Route::post('auth/register','AuthController@register');
-// Route::post('auth/login','AuthController@login');
-// Route::post('cart','CartController@index');
-// Route::post('addProduk','CartController@addProduk');
-// Route::post('addWishlist','WishlistControllerApi@addProduk');
-// Route::get('produk','ProdukControllerApi@showProduk');
-// Route::get('slideshow','SlideShowApi@index');
-// Route::get('showWishlist/{api}','WishlistControllerApi@show');
-// Route::get('showCart/{api}','CartController@show');
-// Route::get('newArrival','ProdukControllerApi@newArrival');
-// Route::get('kategori/{nama}','CategoryControllerApi@show');
-// Route::get('search/{query}','SearchControllerApi@index');
-// Route::get('getApi/{email}','AuthController@getApi');
-
 Route::group([
 
     'middleware' => 'api',
@@ -37,6 +23,8 @@ Route::group([
     'middleware' => 'api',
 
 ], function ($router) {
+    Route::get('order','API\OrderController@index');
+    Route::post('order','API\OrderController@order');
     Route::get('produk/new', 'API\ProdukController@new');
     Route::resource('produk', 'API\ProdukController');
     Route::get('search/{query}','API\SearchController@index');
@@ -44,6 +32,4 @@ Route::group([
     Route::resource('cart','API\CartController');
     Route::get('slideshow','API\SlideshowController@index');
     Route::get('kategori/{id}','API\CategoryController@index');
-
-
 });
