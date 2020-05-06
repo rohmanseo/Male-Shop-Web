@@ -15,11 +15,27 @@ class WishlistController extends Controller
     }
   
     public function index(){
-        $user = auth()->user();
+        $data = auth()->user()->wishlist;
+        $userId = auth()->user()->id;
+        $response = [];
+
+        foreach($data as $d){
+            $produkId = $d->id;
+
+            $isFavorited = User_Wishlist::where('user_id',$userId)
+            ->where('produk_id',$produkId)->count();
+            $d['isFavorited'] = $isFavorited;
+            $response[] = $d;
+
+        }
         return response()->json([
-            'status' => 'success',
-            'data' => $user->wishlist
+            "status" => "success",
+            "data" => $response
         ]);
+        // return response()->json([
+        //     'status' => 'success',
+        //     'data' => $user->wishlist
+        // ]);
     }
 
     

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Produk;
 use App\Kategori;
+use App\User_Wishlist;
 
 class CategoryController extends Controller
 {
@@ -18,10 +19,26 @@ class CategoryController extends Controller
     public function index(Request $request,$id)
     {
         $kategori = Kategori::where('id',$id)->firstOrFail();
-        $produk = Produk::where('kategori_id',$kategori->id)->get();
+        $data = Produk::where('kategori_id',$kategori->id)->get();
+        $userId = auth()->user()->id;
+        $response = [];
+
+        foreach($data as $d){
+            $produkId = $d->id;
+
+            $isFavorited = User_Wishlist::where('user_id',$userId)
+            ->where('produk_id',$produkId)->count();
+            $d['isFavorited'] = $isFavorited;
+            $response[] = $d;
+
+        }
         return response()->json([
-            'status' => 'success',
-            'data' => $produk
+            "status" => "success",
+            "data" => $response
         ]);
+        // return response()->json([
+        //     'status' => 'success',
+        //     'data' => $produk
+        // ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Produk;
+use App\User_Wishlist;
 
 class ProdukController extends Controller
 {
@@ -14,9 +15,21 @@ class ProdukController extends Controller
     public function index()
     {
         $data = Produk::get();
+        $userId = auth()->user()->id;
+        $response = [];
+
+        foreach($data as $d){
+            $produkId = $d->id;
+
+            $isFavorited = User_Wishlist::where('user_id',$userId)
+            ->where('produk_id',$produkId)->count();
+            $d['isFavorited'] = $isFavorited;
+            $response[] = $d;
+
+        }
         return response()->json([
             "status" => "success",
-            "data" => $data
+            "data" => $response
         ]);
     }
 
@@ -33,6 +46,17 @@ class ProdukController extends Controller
     public function show($id)
     {
         $data = Produk::findOrFail($id);
+
+        $userId = auth()->user()->id;
+        $response = [];
+
+    
+        $produkId = $data->id;
+
+        $isFavorited = User_Wishlist::where('user_id',$userId)
+        ->where('produk_id',$produkId)->count();
+        $data['isFavorited'] = $isFavorited;
+
         return response()->json([
             "status" => "success",
             "data" => $data
@@ -41,11 +65,27 @@ class ProdukController extends Controller
 
     public function new()
     {
-        $produk = Produk::orderBy('created_at','desc')->limit(10)->get();
+        $data = Produk::orderBy('created_at','desc')->limit(10)->get();
+        $userId = auth()->user()->id;
+        $response = [];
+
+        foreach($data as $d){
+            $produkId = $d->id;
+
+            $isFavorited = User_Wishlist::where('user_id',$userId)
+            ->where('produk_id',$produkId)->count();
+            $d['isFavorited'] = $isFavorited;
+            $response[] = $d;
+
+        }
         return response()->json([
             "status" => "success",
-            "data" => $produk
+            "data" => $response
         ]);
+        // return response()->json([
+        //     "status" => "success",
+        //     "data" => $produk
+        // ]);
     }
 
     public function edit($id)

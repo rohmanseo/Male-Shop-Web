@@ -32,7 +32,8 @@ class CartController extends Controller
         $user = auth()->user();
         User_Cart::create([
             'user_id' => $user->id,
-            'produk_id' => $request->input('produk_id')
+            'produk_id' => $request->input('produk_id'),
+            'qty' => $request->input('qty'),
         ]);
 
         return response()->json([

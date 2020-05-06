@@ -51,6 +51,37 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
+    public function update(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|min:6',
+            'no_telp'=>'required',
+            'alamat'=>'required',
+            'foto'=>'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
+
+        $user = auth()->user();
+
+        $data = [
+            'nama' => $request->input('nama'),
+            'email' => $user->email,
+            'no_telp' => $request->input('no_telp'),
+            'alamat' => $request->input('alamat'),
+            'foto' => $request->input('foto'),
+            'password' => $user->password
+        ];
+
+        $res = User::where('id',$user->id)->update($data);
+
+        return response()->json([
+            'status' => 'success',
+        ]);
+    }
+
 
     public function login()
     {
